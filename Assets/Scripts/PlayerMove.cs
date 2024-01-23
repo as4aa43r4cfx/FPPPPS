@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -20,6 +21,13 @@ public class PlayerMove : MonoBehaviour
 
     //점프 상태 변수
     public bool isJumping = false;
+
+    // 플레이어 체력 변수
+    public int hp = 20;
+
+    int MaxHp = 20;
+
+    public Slider hpSlider;
 
     private void Start()
     {
@@ -43,6 +51,8 @@ public class PlayerMove : MonoBehaviour
 
         //2-1.메인 카메라를 기준으로 방향을 변환한다
         dir = Camera.main.transform.TransformDirection(dir);
+
+        hpSlider.value = (float)hp / (float)MaxHp;
 
         if (cc.collisionFlags == CollisionFlags.Below)
         {
@@ -70,5 +80,9 @@ public class PlayerMove : MonoBehaviour
         //3.이동 속도에 맞춰 이동한다.
         cc.Move(dir * moveSpeed * Time.deltaTime);
 
+    }
+    public void DamageAction(int damage)
+    {
+        hp -= damage;
     }
 }
