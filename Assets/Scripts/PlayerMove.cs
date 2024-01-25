@@ -29,6 +29,8 @@ public class PlayerMove : MonoBehaviour
 
     public Slider hpSlider;
 
+    public GameObject hitEffect;
+
     private void Start()
     {
         //캐릭터 컨트롤러 컴포넌트 받아오기
@@ -38,6 +40,11 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameManager.gm.gState != GameManager.GameState.Run)
+        {
+            return;
+        }
         //w,a,s,d키를 누르면 캐릭터를 그 방향으로 이동시키고 싶다
         //spacebar키를 누르면 캐릭터를 수직으로 점프시키고 싶다
 
@@ -84,5 +91,19 @@ public class PlayerMove : MonoBehaviour
     public void DamageAction(int damage)
     {
         hp -= damage;
+        // 만일, 플레이어의 체력이 0보다 크면 피격 효과를 출력한다.
+        if (hp > 0)
+        {
+            // 피격 이펙트 코루틴을 시작한다.
+            StartCoroutine(PlayHitEffect());
+        }
+    }
+
+    // 피격 효과 코루틴 함수
+    IEnumerator PlayHitEffect()
+    {
+        hitEffect.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        hitEffect.SetActive(false);
     }
 }

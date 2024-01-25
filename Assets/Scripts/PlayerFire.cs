@@ -27,6 +27,10 @@ public class PlayerFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.gm.gState != GameManager.GameState.Run)
+        {
+            return;
+        }
         //1.마우스 오른족 버튼을 입력 받는다
         if (Input.GetMouseButtonDown(1))
         {
