@@ -45,6 +45,9 @@ public class EnemyFSM : MonoBehaviour
 
     public Slider hpSlider;
 
+    Animator anim;
+    Quaternion originRot;
+
     void Start()
     {
         m_State = EnemyState.Idle;
@@ -54,6 +57,9 @@ public class EnemyFSM : MonoBehaviour
         cc = GetComponent<CharacterController>();
 
         originPos = transform.position;
+        originRot = transform.rotation;
+
+        anim = transform.GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -89,6 +95,8 @@ public class EnemyFSM : MonoBehaviour
         {
             m_State = EnemyState.Move;
             print("상태 전환: Idle -> Move");
+
+            anim.SetTrigger("IdleToMove");
         }
     }
 
@@ -106,6 +114,8 @@ public class EnemyFSM : MonoBehaviour
             Vector3 dir = (player.position - transform.position).normalized;
 
             cc.Move(dir * moveSpeed * Time.deltaTime);
+
+            transform.forward = dir;
         }
         else
         {
@@ -113,6 +123,8 @@ public class EnemyFSM : MonoBehaviour
             print("상태 전환: Move -> Attack");
 
             currentTime = attackDelay;
+
+            anim.SetTrigger("MoveToAttackDelay");
         }
     }
 
@@ -123,9 +135,11 @@ public class EnemyFSM : MonoBehaviour
             currentTime += Time.deltaTime;
             if (currentTime > attackDelay)
             {
-                player.GetComponent<PlayerMove>().DamageAction(attackPower);
+                //player.GetComponent<PlayerMove>().DamageAction(attackPower);
                 print("공격");
                 currentTime = 0;
+
+                anim.SetTrigger("StartAttack");
             }
         }
         else
@@ -133,7 +147,14 @@ public class EnemyFSM : MonoBehaviour
             m_State = EnemyState.Move;
             print("상태 전환: Attack -> Move");
             currentTime = 0;
+
+            anim.SetTrigger("AttackToMove");
         }
+    }
+    public void AttackAction()
+    {
+        player.GetComponent<PlayerMove>().DamageAction(attackPower);
+
     }
 
     void Return()
@@ -142,13 +163,18 @@ public class EnemyFSM : MonoBehaviour
         {
             Vector3 dir = (originPos - transform.position).normalized;
             cc.Move(dir * moveSpeed * Time.deltaTime);
+
+            transform.forward = dir;
         }
         else
         {
             transform.position = originPos;
+            transform.rotation = originRot;
 
             m_State = EnemyState.Idle;
             print("상태 전환: Return -> Idle");
+
+            anim.SetTrigger("MoveToIdle");
         }
     }
 
