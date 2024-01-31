@@ -192,6 +192,8 @@ public class EnemyFSM : MonoBehaviour
             m_State = EnemyState.Damaged;
             print("상태 전환: Any state -> Damaged");
 
+
+            anim.SetTrigger("Damaged");
             Damaged();
         }
         else
@@ -199,6 +201,8 @@ public class EnemyFSM : MonoBehaviour
             m_State = EnemyState.Die;
             print("상태 전환: Any state -> Die");
 
+
+            anim.SetTrigger("Die");
             Die();
         }
     }
@@ -210,7 +214,7 @@ public class EnemyFSM : MonoBehaviour
 
     IEnumerator DamageProcess()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         m_State = EnemyState.Move;
         print("상태 전환: Damaged -> Move");
