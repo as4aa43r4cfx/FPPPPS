@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
+    Animator anim;
+
     public float moveSpeed = 7f;
 
     //캐릭터 컨트롤러 변수
@@ -35,6 +37,8 @@ public class PlayerMove : MonoBehaviour
     {
         //캐릭터 컨트롤러 컴포넌트 받아오기
         cc = GetComponent<CharacterController>();
+
+        anim = GetComponentInChildren<Animator>();
     }
     
     // Update is called once per frame
@@ -55,6 +59,8 @@ public class PlayerMove : MonoBehaviour
         //2.이동 방향을 설정한다.
         Vector3 dir = new Vector3(h, 0, v);
         dir = dir.normalized;
+
+        anim.SetFloat("MoveMotion", dir.magnitude);
 
         //2-1.메인 카메라를 기준으로 방향을 변환한다
         dir = Camera.main.transform.TransformDirection(dir);

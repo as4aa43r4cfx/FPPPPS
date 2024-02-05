@@ -65,8 +65,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (player.hp <= 0)
         {
+            player.GetComponentInChildren<Animator>().SetFloat("MoveMotion", 0f);
+
             gameLabel.SetActive(true);
 
             gameText.text = "Game Over";

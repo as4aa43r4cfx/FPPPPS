@@ -17,12 +17,16 @@ public class PlayerFire : MonoBehaviour
     // 발사 무기 공격력
     public int weaponPower = 5;
 
+    Animator anim;
+
 
 
 
     void Start()
     {
         ps = bulletEffect.GetComponent<ParticleSystem>();
+
+        anim = GetComponentInChildren<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -46,6 +50,10 @@ public class PlayerFire : MonoBehaviour
         //마우스 왼쪽 버튼을입력받는다
         if (Input.GetMouseButtonDown(0))
         {
+            if (anim.GetFloat("MoveMotion") == 0)
+            {
+                anim.SetTrigger("Attack");
+            }
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
             RaycastHit hitInfo = new RaycastHit();
