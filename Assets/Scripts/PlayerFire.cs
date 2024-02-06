@@ -19,6 +19,15 @@ public class PlayerFire : MonoBehaviour
 
     Animator anim;
 
+    enum WeaponMode
+    {
+        Normal,
+        Sniper
+    }
+    WeaponMode wMode;
+
+    bool ZoomMode = false;
+
 
 
 
@@ -27,6 +36,8 @@ public class PlayerFire : MonoBehaviour
         ps = bulletEffect.GetComponent<ParticleSystem>();
 
         anim = GetComponentInChildren<Animator>();
+
+        wMode = WeaponMode.Normal;
     }
     // Update is called once per frame
     void Update()
@@ -38,6 +49,20 @@ public class PlayerFire : MonoBehaviour
         //1.마우스 오른족 버튼을 입력 받는다
         if (Input.GetMouseButtonDown(1))
         {
+            switch (wMode)
+            {
+                case WeaponMode.Normal:
+
+
+                    break;
+
+                case WeaponMode.Sniper:
+
+                    break;
+
+            }
+
+
             GameObject bomb = Instantiate(bombFactory);
             bomb.transform.position = firePosition.transform.position;
 
