@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerFire : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerFire : MonoBehaviour
     public float throwPower = 15f;
 
     public GameObject bulletEffect;
+
+    public Text wModeText;
 
     ParticleSystem ps;
 
@@ -53,23 +56,34 @@ public class PlayerFire : MonoBehaviour
             {
                 case WeaponMode.Normal:
 
+                    GameObject bomb = Instantiate(bombFactory);
+                    bomb.transform.position = firePosition.transform.position;
+
+                    Rigidbody rb = bomb.GetComponent<Rigidbody>();
+
+                    rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
 
                     break;
 
                 case WeaponMode.Sniper:
+                    if (!ZoomMode)
+                    {
+                        Camera.main.fieldOfView = 15f;
+                        ZoomMode = true;
+                    }
+                   
+                    else
+                    {
+                        Camera.main.fieldOfView = 60f;
+                        ZoomMode = false;
+                    }
 
                     break;
 
             }
 
 
-            GameObject bomb = Instantiate(bombFactory);
-            bomb.transform.position = firePosition.transform.position;
-
-            Rigidbody rb = bomb.GetComponent<Rigidbody>();
-
-
-            rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
+            
         }
 
         //마우스 왼쪽 버튼을입력받는다
@@ -105,6 +119,21 @@ public class PlayerFire : MonoBehaviour
                     ps.Play();
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            wMode = WeaponMode.Normal;
+
+            Camera.main.fieldOfView = 60f;
+
+            wModeText.text = "Normal Mode";
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            wMode = WeaponMode.Sniper;
+
+            wModeText.text = "Sniper Mode";
         }
     }
 }
