@@ -9,6 +9,8 @@ public class PlayerFire : MonoBehaviour
 
     public GameObject bombFactory;
 
+    public GameObject[] eff_Flash;
+
     public float throwPower = 15f;
 
     public GameObject bulletEffect;
@@ -119,6 +121,8 @@ public class PlayerFire : MonoBehaviour
                     ps.Play();
                 }
             }
+
+            StartCoroutine(ShootEffectOn(0.05f));
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -136,4 +140,18 @@ public class PlayerFire : MonoBehaviour
             wModeText.text = "Sniper Mode";
         }
     }
+
+    IEnumerator ShootEffectOn(float duration)
+    {
+        
+        int num = Random.Range(0, eff_Flash.Length - 1);
+        
+        eff_Flash[num].SetActive(true);
+     
+        yield return new WaitForSeconds(duration);
+ 
+        eff_Flash[num].SetActive(false);
+    }
+
+
 }
