@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,10 +20,12 @@ public class GameManager : MonoBehaviour
     {
         Ready,
         Run,
+        Pause,
         GameOver
     }
 
     public GameState gState;
+    public GameObject gameOption;
 
     public GameObject gameLabel;
 
@@ -81,5 +84,35 @@ public class GameManager : MonoBehaviour
 
 
 
+    }
+
+    public void OpenOptionWindow()
+    {
+        gameOption.SetActive(true);
+
+        Time.timeScale = 0f;
+
+        gState = GameState.Pause;
+    }
+    
+    public void CloseOptionWindow()
+    {
+        gameOption.SetActive(false);
+
+        Time.timeScale = 1f;
+
+        gState = GameState.Run;
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
