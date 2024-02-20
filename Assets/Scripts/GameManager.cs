@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
 
         gameText.color = new Color32(255, 185, 0, 255);
 
+        Transform buttons = gameLabel.transform.GetChild(0);
+
+        buttons.gameObject.SetActive(true);
+
         StartCoroutine(ReadyToStart());
 
         player = GameObject.Find("Player").GetComponent<PlayerMove>();
