@@ -5,6 +5,17 @@ using UnityEngine.UI;
 
 public class PlayerFire : MonoBehaviour
 {
+    public GameObject Crosshair02_zoom;
+
+    public GameObject Weapon01;
+    public GameObject Weapon02;
+
+    public GameObject Crosshair01;
+    public GameObject Crosshair02;
+
+    public GameObject Weapon01_R;
+    public GameObject Weapon02_R;
+
     public GameObject firePosition;
 
     public GameObject bombFactory;
@@ -72,12 +83,18 @@ public class PlayerFire : MonoBehaviour
                     {
                         Camera.main.fieldOfView = 15f;
                         ZoomMode = true;
+
+                        Crosshair02_zoom.SetActive(true);
+                        Crosshair02.SetActive(false);
                     }
-                   
+
                     else
                     {
                         Camera.main.fieldOfView = 60f;
                         ZoomMode = false;
+
+                        Crosshair02_zoom.SetActive(false);
+                        Crosshair02.SetActive(true);
                     }
 
                     break;
@@ -132,12 +149,29 @@ public class PlayerFire : MonoBehaviour
             Camera.main.fieldOfView = 60f;
 
             wModeText.text = "Normal Mode";
+
+            Weapon01.SetActive(true);
+            Weapon02.SetActive(false);
+            Crosshair01.SetActive(true);
+            Crosshair02.SetActive(false);
+            Weapon01_R.SetActive(true);
+            Weapon02_R.SetActive(false);
+
+            Crosshair02_zoom.SetActive(false);
+            ZoomMode = false;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             wMode = WeaponMode.Sniper;
 
             wModeText.text = "Sniper Mode";
+
+            Weapon01.SetActive(false);
+            Weapon02.SetActive(true);
+            Crosshair01.SetActive(false);
+            Crosshair02.SetActive(true);
+            Weapon01_R.SetActive(false);
+            Weapon02_R.SetActive(true);
         }
     }
 
