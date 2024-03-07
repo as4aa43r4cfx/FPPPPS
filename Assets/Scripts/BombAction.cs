@@ -16,11 +16,9 @@ public class BombAction : MonoBehaviour
     // 충돌했을 때의 처리
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("bomb");
         
         // 폭발 효과 반경 내에서 레이어가 "Enemy"인 모든 게임 오브젝트들의 Collider 컴포넌트를 배열에 저장한다.
-        Collider[] cols = Physics.OverlapSphere(transform.position, explosionRadius, 1 << 10);
-        Debug.Log(cols);
+        Collider[] cols = Physics.OverlapSphere(transform.position, explosionRadius, 1 << 8);
 
 
         // 저장된 Collider 배열에 있는 모든 에너미에게 수류탄 데미지를 적용한다.
