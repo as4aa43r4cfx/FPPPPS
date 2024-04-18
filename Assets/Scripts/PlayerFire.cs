@@ -28,10 +28,15 @@ public class PlayerFire : MonoBehaviour
 
     public Text wModeText;
 
+    public int BombCount = 5;
+
+    public Text Bomb_Count;
+
     ParticleSystem ps;
 
     // 발사 무기 공격력
     public int weaponPower = 5;
+
 
     Animator anim;
 
@@ -54,6 +59,10 @@ public class PlayerFire : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
 
         wMode = WeaponMode.Normal;
+
+        Bomb_Count = GameObject.Find("Bomb_Count").GetComponent<Text>();
+
+           
     }
     // Update is called once per frame
     void Update()
@@ -68,13 +77,27 @@ public class PlayerFire : MonoBehaviour
             switch (wMode)
             {
                 case WeaponMode.Normal:
+                    if (BombCount > 0)
+                    {
+                        GameObject bomb = Instantiate(bombFactory);
 
-                    GameObject bomb = Instantiate(bombFactory);
-                    bomb.transform.position = firePosition.transform.position;
+                        bomb.transform.position = firePosition.transform.position;
 
-                    Rigidbody rb = bomb.GetComponent<Rigidbody>();
+                        Rigidbody rb = bomb.GetComponent<Rigidbody>();
 
-                    rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
+                        rb.AddForce(Camera.main.transform.forward * throwPower, ForceMode.Impulse);
+
+                        BombCount -= 1;
+
+                        Bomb_Count.text = "BombCount:" + BombCount.ToString();
+
+                    }
+                       
+
+
+
+
+
 
                     break;
 
@@ -104,6 +127,7 @@ public class PlayerFire : MonoBehaviour
 
             
         }
+
 
         //마우스 왼쪽 버튼을입력받는다
         if (Input.GetMouseButtonDown(0))
