@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     float yVelocity = 0;
 
     //점프력 변수
-    public float JumpPower = 10f;
+    public float JumpPower = 1f;
 
     //점프 상태 변수
     public bool isJumping = false;
