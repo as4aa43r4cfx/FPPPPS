@@ -16,7 +16,10 @@ public class ActionController : MonoBehaviour
     private LayerMask layerMask; 
 
     [SerializeField]
-    private Text actionText; 
+    private Text actionText;
+
+    [SerializeField]
+    private Inventory theInventory;
 
     void Update()
     {
@@ -62,6 +65,7 @@ public class ActionController : MonoBehaviour
             if (hitInfo.transform != null)
             {
                 Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " 획득 했습니다.");  // 인벤토리 넣기
+                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
                 Destroy(hitInfo.transform.gameObject);
                 ItemInfoDisappear();
             }

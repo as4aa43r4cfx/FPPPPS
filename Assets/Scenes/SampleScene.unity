@@ -15617,6 +15617,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   actionText: {fileID: 1212601161}
+  theInventory: {fileID: 1892441229}
 --- !u!65 &963194233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30820,6 +30821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcf6afaed39ae44b8ac84d47105f193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_InventoryBase: {fileID: 590634040}
+  go_SlotsParent: {fileID: 737263894}
 --- !u!1001 &1893325194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35430,6 +35433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8286814424428168137, guid: 3473f2d826b41c64884543d074e8ae7c,
         type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286814424428168137, guid: 3473f2d826b41c64884543d074e8ae7c,
+        type: 3}
       propertyPath: itemImage
       value: 
       objectReference: {fileID: 8812056129923026851}
@@ -35452,6 +35460,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812056130179728711, guid: 3473f2d826b41c64884543d074e8ae7c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812056130179728711, guid: 3473f2d826b41c64884543d074e8ae7c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812056130179728711, guid: 3473f2d826b41c64884543d074e8ae7c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812056130179728712, guid: 3473f2d826b41c64884543d074e8ae7c,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8812056130246403499, guid: 3473f2d826b41c64884543d074e8ae7c,
         type: 3}
