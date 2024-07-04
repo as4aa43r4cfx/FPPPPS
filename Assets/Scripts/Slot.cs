@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour, IPointerClickHandler
 {
 
     public Item item; 
@@ -89,48 +89,4 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         }
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (item != null)
-        {
-            DragSlot.instance.dragSlot = this;
-            DragSlot.instance.DragSetImage(itemImage);
-
-            DragSlot.instance.transform.position = eventData.position;
-        }
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (item != null)
-        {
-            DragSlot.instance.transform.position = eventData.position;
-        }
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        DragSlot.instance.SetColor(0);
-        DragSlot.instance.dragSlot = null;
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-
-        if (DragSlot.instance.dragSlot != null)
-            ChangeSlot();
-    }
-
-    private void ChangeSlot()
-    {
-        Item _tempItem = item;
-        int _tempItemCount = itemCount;
-
-        AddItem(DragSlot.instance.dragSlot.item, DragSlot.instance.dragSlot.itemCount);
-
-        if (_tempItem != null)
-            DragSlot.instance.dragSlot.AddItem(_tempItem, _tempItemCount);
-        else
-            DragSlot.instance.dragSlot.ClearSlot();
-    }
 }
