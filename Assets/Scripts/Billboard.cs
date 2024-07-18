@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    public Transform target;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        transform.forward = target.forward;
-        
+        // 자기 자신의 방향을 카메라의 방향과 일치시킨다.
+        transform.forward = Camera.main.transform.forward;
     }
 }

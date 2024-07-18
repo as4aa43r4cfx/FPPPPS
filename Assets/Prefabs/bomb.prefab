@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7696115808992639459}
   - component: {fileID: 7696115808992639471}
   - component: {fileID: 7696115808992639465}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d10196f3fae39e449050db276b48658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombEffect: {fileID: 7176283370902206330, guid: 02854e6013d379545ad5f12a92c1f2ee, type: 3}
+  bombEffect: {fileID: 7176283370902206330, guid: 02854e6013d379545ad5f12a92c1f2ee,
+    type: 3}
   attackPower: 10
   explosionRadius: 5
 --- !u!54 &7696115808992639465
@@ -138,9 +139,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7696115808992639468}
     m_Modifications:
+    - target: {fileID: 100000, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
       propertyPath: m_Name
       value: DM51A1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
       propertyPath: m_RootOrder
@@ -190,6 +215,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
 --- !u!4 &2379410654263739842 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400010, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8, type: 3}
+  m_CorrespondingSourceObject: {fileID: 400010, guid: e889f3b0fa9bf2e4b87b0bd49cd501f8,
+    type: 3}
   m_PrefabInstance: {fileID: 2379410654263877448}
   m_PrefabAsset: {fileID: 0}

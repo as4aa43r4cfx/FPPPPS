@@ -8,12 +8,12 @@ public class ActionController : MonoBehaviour
     [SerializeField]
     private float range;
 
-    private bool pickupActivated = false;  
+    private bool pickupActivated = false;
 
-    private RaycastHit hitInfo;  
+    private RaycastHit hitInfo;
 
     [SerializeField]
-    private LayerMask layerMask; 
+    private LayerMask layerMask;
 
     [SerializeField]
     private Text actionText;
@@ -28,11 +28,11 @@ public class ActionController : MonoBehaviour
     }
     private void TryAction()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             CheckItem();
             CanPickUp();
-        }    
+        }
     }
     private void CheckItem()
     {
