@@ -10,6 +10,7 @@ TagManager:
   - backgroundImage
   - elementText
   - amountText
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Bomb
+  - Player
+  - Enemy
   - 
   - 
   - 
