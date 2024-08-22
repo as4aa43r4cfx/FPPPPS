@@ -35,11 +35,11 @@ public class ItemDropTable : ScriptableObject
         return null;
     }
 
-    public void ItemDrop(Vector3 pos)
-    {
-        var item = PickItem();
-        if (item == null) return;
+    //public void ItemDrop(Vector3 pos)
+    //{
+        //var item = PickItem();
+        //if (item == null) return;
 
-        Instantiate(item.prefab, pos, Quaternion.identity);
-    }
+        //Instantiate(item.prefab, pos, Quaternion.identity);
+    //}
 }
