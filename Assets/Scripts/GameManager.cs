@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     // 현재의 게임 상태 변수
     public GameState gState;
 
+    //물
+    public static bool isWater = false;
+
+
     // 게임 상태 UI 오브젝트 변수
     public GameObject gameLabel;
 
@@ -44,7 +48,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // 초기 게임 상태는 준비 상태로 설정한다.
-        gState = GameState.Ready;
+        gState = GameState.Run;
 
         // 게임 상태 UI 오브젝트에서 Text 컴포넌트를 가져온다.
         gameText = gameLabel.GetComponent<Text>();
