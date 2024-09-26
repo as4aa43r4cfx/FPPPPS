@@ -50,7 +50,12 @@ public class Water : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Player")
+        {
+            Debug.Log("1차차ㅏㅏㅏㅏ");
             GetInWater(other);  // 물에 들어감
+            
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -67,6 +72,9 @@ public class Water : MonoBehaviour
     {
         GameManager.isWater = true;
         _player.transform.GetComponent<Rigidbody>().drag = waterDrag;
+        RenderSettings.fogColor = waterColor;
+        RenderSettings.fogDensity = waterFogDensity;
+        Debug.Log("아아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
 
     }
 
@@ -77,6 +85,8 @@ public class Water : MonoBehaviour
         {
             GameManager.isWater = false;
             _player.transform.GetComponent<Rigidbody>().drag = originDrag;
+            RenderSettings.fogColor = originColor;
+            RenderSettings.fogDensity = originFogDensity;
         }
     }
 }
