@@ -73,6 +73,7 @@ public class Water : MonoBehaviour
         GameManager.isWater = true;
         _player.transform.GetComponent<Rigidbody>().drag = waterDrag;
         RenderSettings.fogColor = waterColor;
+        Debug.Log(RenderSettings.fogColor);
         RenderSettings.fogDensity = waterFogDensity;
         Debug.Log("焼焼たたたたたたたたたたた");
 

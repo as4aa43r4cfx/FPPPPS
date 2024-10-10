@@ -97,7 +97,7 @@ public class PlayerMove : MonoBehaviour
         cc.Move(dir * moveSpeed * Time.deltaTime);
 
         // 4. 현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영한다.
-        hpSlider.value = (float)hp / (float)maxHp;
+        //hpSlider.value = (float)hp / (float)maxHp;
     }
 
     // 플레이어의 피격 함수

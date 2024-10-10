@@ -49,13 +49,13 @@ public class ActionController : MonoBehaviour
     private void ItemInfoAppear()
     {
         pickupActivated = true;
-        actionText.gameObject.SetActive(true);
-        actionText.text = hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " È¹µæ " + "<color=yellow>" + "(E)" + "</color>";
+        //actionText.gameObject.SetActive(true);
+        //actionText.text = hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " È¹µæ " + "<color=yellow>" + "(E)" + "</color>";
     }
     private void ItemInfoDisappear()
     {
         pickupActivated = false;
-        actionText.gameObject.SetActive(false);
+        //actionText.gameObject.SetActive(false);
     }
 
     private void CanPickUp()
