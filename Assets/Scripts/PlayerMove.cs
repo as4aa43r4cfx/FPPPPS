@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField] private float swimSpeed;
+    [SerializeField] private float swimFastSpeed;
+    [SerializeField] private float upSwimSpeed;
+
+    private float applySpeed;
+
     // 이동 속도 변수
     public float moveSpeed = 7f;
 
@@ -49,6 +55,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+       
         // 게임 상태가 "게임 중" 상태일 때에만 조작 가능하게 한다.
         if (GameManager.gm.gState != GameManager.GameState.Run)
         {
@@ -98,7 +105,14 @@ public class PlayerMove : MonoBehaviour
 
         // 4. 현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영한다.
         //hpSlider.value = (float)hp / (float)maxHp;
+
     }
+
+    
+
+  
+
+    
 
     // 플레이어의 피격 함수
     public void DamageAction(int damage)

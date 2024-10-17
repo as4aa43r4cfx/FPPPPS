@@ -83,45 +83,7 @@ public class GameManager : MonoBehaviour
         // 상태를 "게임 중" 상태로 변경한다.
         gState = GameState.Run;
     }
-    void Update()
-    {
-        if (isActivated && GameManager.canPlayerMove)
-        {
-            WaterCheck();
-            IsGround();
-            TryJump();
-            if (!GameManager.isWater) // 달리기는 수영 중이 아닐 때만
-                TryRun();
-            TryCrouch();
-            Move();
-            MoveCheck();
-            CameraRotation();
-            CharacterRotation();
-        }
-    }
-    private void WaterCheck()
-    {
-        if (GameManager.isWater) // 물 속 일 때
-        {
-            if (Input.GetKeyDown(KeyCode.LeftShift)) // Shift 키 누르면 swimFastSpeed 속도로.
-                applySpeed = swimFastSpeed;
-            else // 아니라면 swimSpeed 속도로.
-                applySpeed = swimSpeed;
-        }
-    }
-
-    private void TryJump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround && !GameManager.isWater && theStatusController.GetCurrentSP() > 0)
-            Jump();
-        else if (Input.GetKey(KeyCode.Space) && GameManager.isWater)
-            UpSwim(); // 스페이스 키를 꾹 누르는 중이고 물 속이라면 
-    }
-
-    private void UpSwim()
-    {
-        myRigid.velocity = transform.up * upSwimSpeed;
-    }
+    
 
 }
 
