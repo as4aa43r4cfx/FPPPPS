@@ -6887,7 +6887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.15
+      value: -10.72
       objectReference: {fileID: 0}
     - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7513,7 +7513,11 @@ MonoBehaviour:
     type: 3}
   throwPower: 15
   bulletEffect: {fileID: 0}
+  ps: {fileID: 0}
   weaponPower: 5
+  anim: {fileID: 0}
+  wMode: 0
+  ZoomMode: 0
   wModeText: {fileID: 0}
   eff_Flash:
   - {fileID: 291885540}
@@ -7558,8 +7562,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8123f2da4713d7c4bb66f16516e41f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  yVelocity: 0
+  swimSpeed: 4
+  swimFastSpeed: 8
+  upSwimSpeed: 4
+  moveSpeed: 100
+  yVelocity: 1
   jumpPower: 10
   isJumping: 0
   hp: 20

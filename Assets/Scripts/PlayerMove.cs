@@ -46,6 +46,7 @@ public class PlayerMove : MonoBehaviour
 
     private Rigidbody myRigid;
 
+
     void Start()
     {
         // 캐릭터 콘트롤러 컴포넌트 받아오기
@@ -60,7 +61,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-       
+        Move();
+
         // 게임 상태가 "게임 중" 상태일 때에만 조작 가능하게 한다.
         if (GameManager.gm.gState != GameManager.GameState.Run)
         {
@@ -69,22 +71,7 @@ public class PlayerMove : MonoBehaviour
 
         // 키보드 <W>, <A>, <S>, <D> 버튼을 입력하면 캐릭터를 그 방향으로 이동시키고 싶다.
         // 키보드 <Space> 버튼을 입력하면 캐릭터를 수직으로 점프시키고 싶다.
-        public void Move()
-        {
-            // 1. 사용자의 입력을 받는다.
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
-
-            // 2. 이동 방향을 설정한다.
-            Vector3 dir = new Vector3(h, 0, v);
-            dir = dir.normalized;
-
-            // 이동 블랜딩 트리를 호출하고 벡터의 크기 값을 넘겨준다.
-            anim.SetFloat("MoveMotion", dir.magnitude);
-
-            // 2-1. 메인 카메라를 기준으로 방향을 변환한다.
-            dir = Camera.main.transform.TransformDirection(dir);
-        }
+        
        
 
         // 2-2. 만일, 점프 중이었고, 다시 바닥에 착지했다면...
@@ -105,20 +92,24 @@ public class PlayerMove : MonoBehaviour
             Jump();
         }
 
-        // 2-4. 캐릭터 수직 속도에 중력 값을 적용한다.
-        yVelocity += gravity * Time.deltaTime;
-        dir.y = yVelocity;
-
-        // 3. 이동 속도에 맞춰 이동한다.
-        myRigid.Move(dir * moveSpeed * Time.deltaTime);
-
-        // 4. 현재 플레이어 hp(%)를 hp 슬라이더의 value에 반영한다.
-        //hpSlider.value = (float)hp / (float)maxHp;
 
     }
     private void Jump()
     {
       
+    }
+
+    private void Move()
+    {
+        float _moveDirX = Input.GetAxisRaw("Horizontal");
+        float _moveDirZ = Input.GetAxisRaw("Vertical");
+        Vector3 _moveHorizontal = transform.right * _moveDirX;
+        Vector3 _moveVertical = transform.forward * _moveDirZ;
+
+        Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * moveSpeed;
+
+        myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+
     }
 
 

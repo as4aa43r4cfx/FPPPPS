@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
 public class PlayerFire : MonoBehaviour
 {
     // 발사 위치
@@ -225,3 +225,4 @@ public class PlayerFire : MonoBehaviour
         eff_Flash[num].SetActive(false);
     }
 }
+*/
