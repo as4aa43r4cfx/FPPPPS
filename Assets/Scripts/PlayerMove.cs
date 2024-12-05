@@ -14,11 +14,15 @@ public class PlayerMove : MonoBehaviour
     // 중력 변수
     float gravity = -20f;
 
+    float waterGravity = -10f;
+
     // 수직 속력 변수
     public float yVelocity = 0;
 
     // 점프력 변수
     public float jumpPower = 10f;
+
+    public float upSwim = 4f;
 
     // 점프 상태 변수
     public bool isJumping = false;
@@ -72,25 +76,41 @@ public class PlayerMove : MonoBehaviour
         // 2-1. 메인 카메라를 기준으로 방향을 변환한다.
         dir = Camera.main.transform.TransformDirection(dir);
 
-        // 2-2. 만일, 점프 중이었고, 다시 바닥에 착지했다면...
-        if (isJumping && cc.collisionFlags == CollisionFlags.Below)
+        if(!GameManager.isWater)
         {
-            // 점프 전 상태로 초기화한다.
-            isJumping = false;
-            // 캐릭터 수직 속도를 0으로 만든다.
-            yVelocity = 0;
-        }
+            // 2-2. 만일, 점프 중이었고, 다시 바닥에 착지했다면...
+            if (isJumping && cc.collisionFlags == CollisionFlags.Below)
+            {
+                // 점프 전 상태로 초기화한다.
+                isJumping = false;
+                // 캐릭터 수직 속도를 0으로 만든다.
+                yVelocity = 0;
+            }
 
-        // 2-3. 만일, 키보드 <Space> 버튼을 입력했고, 점프를 안 한 상태라면...
-        if (Input.GetButtonDown("Jump") && !isJumping)
+            // 2-3. 만일, 키보드 <Space> 버튼을 입력했고, 점프를 안 한 상태라면...
+            if (Input.GetButtonDown("Jump") && !isJumping)
+            {
+                // 캐릭터 수직 속도에 점프력을 적용하고 점프 상태로 변경한다.
+                yVelocity = jumpPower;
+                isJumping = true;
+            }
+
+            // 2-4. 캐릭터 수직 속도에 중력 값을 적용한다.
+            yVelocity += gravity * Time.deltaTime;
+        }
+        else
         {
-            // 캐릭터 수직 속도에 점프력을 적용하고 점프 상태로 변경한다.
-            yVelocity = jumpPower;
-            isJumping = true;
+            if(Input.GetKey(KeyCode.Space))
+            {
+                yVelocity = upSwim;
+            }
+            else
+            {
+                yVelocity += waterGravity * Time.deltaTime;
+            }
         }
+        
 
-        // 2-4. 캐릭터 수직 속도에 중력 값을 적용한다.
-        yVelocity += gravity * Time.deltaTime;
         dir.y = yVelocity;
 
         // 3. 이동 속도에 맞춰 이동한다.
