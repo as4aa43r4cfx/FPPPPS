@@ -126,6 +126,16 @@ public class PlayerMove : MonoBehaviour
         {
             moveSpeed = 7f;
         }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveSpeed = 14f;
+            jumpPower = 4f;
+        }
+        else
+        {
+            moveSpeed = 7f;
+            jumpPower = 5f;
+        }
     }
 
     // 플레이어의 피격 함수
