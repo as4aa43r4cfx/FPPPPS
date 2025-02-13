@@ -129,12 +129,12 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed = 14f;
-            jumpPower = 4f;
+            jumpPower = 3f;
         }
         else
         {
             moveSpeed = 7f;
-            jumpPower = 5f;
+            jumpPower = 4f;
         }
     }
 
