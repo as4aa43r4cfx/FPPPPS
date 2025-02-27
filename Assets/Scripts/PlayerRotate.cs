@@ -1,7 +1,7 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerRotate : MonoBehaviour
 {
     // 회전 속도 변수
@@ -34,3 +34,4 @@ public class PlayerRotate : MonoBehaviour
         transform.eulerAngles = new Vector3(0, mx, 0);
     }
 }
+*/

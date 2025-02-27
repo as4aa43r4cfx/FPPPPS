@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
+    Vector3 moveVec;
+
     // 이동 속도 변수
     public float moveSpeed = 7f;
 
@@ -68,6 +70,7 @@ public class PlayerMove : MonoBehaviour
 
         // 2. 이동 방향을 설정한다.
         Vector3 dir = new Vector3(h, 0, v);
+        moveVec = new Vector3(h, 0, v).normalized;
         dir = dir.normalized;
 
         // 이동 블랜딩 트리를 호출하고 벡터의 크기 값을 넘겨준다.
@@ -136,6 +139,7 @@ public class PlayerMove : MonoBehaviour
             moveSpeed = 7f;
             jumpPower = 4f;
         }
+        transform.LookAt(transform.position + moveVec   );
     }
 
     // 플레이어의 피격 함수
