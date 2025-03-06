@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Weapon : MonoBehaviour
+public class PlayerFire : MonoBehaviour
 {
 
     // 발사 무기 공격력
@@ -12,18 +12,11 @@ public class Weapon : MonoBehaviour
     public BoxCollider Area;
     public TrailRenderer trailEffect;
 
-    IEnumerator Swing()
+    void Start()
     {
-        yield return new WaitForSeconds(0.1f);
-        Area.enabled = true;
-        trailEffect.enabled = true;
 
-        yield return new WaitForSeconds(0.3f);
-        Area.enabled = false;
-
-        yield return new WaitForSeconds(0.3f);
-        trailEffect.enabled = false;
     }
+
     void Update()
     {
 
