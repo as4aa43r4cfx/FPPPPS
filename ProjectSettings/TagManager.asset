@@ -11,6 +11,7 @@ TagManager:
   - elementText
   - amountText
   - Item
+  - Interaction
   layers:
   - Default
   - TransparentFX
