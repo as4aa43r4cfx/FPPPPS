@@ -2,18 +2,13 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 8
+  serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_Name: AQUAS_Lite_Water
   m_Shader: {fileID: 4800000, guid: d54a881b830cae544a72985daaece999, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _ENABLEPROBERELFECTIONS_ON
-  - _ENABLEREALTIMEREFLECTIONS_ON
-  - _ENABLEREFLECTIONS_ON
+  m_ShaderKeywords: _ENABLEPROBERELFECTIONS_ON _ENABLEREALTIMEREFLECTIONS_ON _ENABLEREFLECTIONS_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -71,12 +66,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _Density: 0.01
-    - _DepthTransparency: -0.43
+    - _Density: 0.24
+    - _DepthTransparency: 0.2
     - _DetailNormalMapScale: 1
     - _DistanceFade: 0.5
     - _Distortion: 0.119
@@ -88,7 +82,7 @@ Material:
     - _Fade: 2
     - _FarTilingDistance: 1000
     - _FoamBlend: 0.2
-    - _FoamContrast: 0.023
+    - _FoamContrast: 0.276
     - _FoamIntensity: 1.92
     - _FoamSpeed: 0.1
     - _FoamTiling: 1
@@ -98,7 +92,7 @@ Material:
     - _FullTransparency: 0
     - _Gloss: 0.7
     - _Glossiness: 0.5
-    - _LightWrapping: 0.18
+    - _LightWrapping: 2
     - _MediumTilingDistance: 100
     - _Metallic: 0
     - _Mode: 0
@@ -116,7 +110,7 @@ Material:
     - _ShoreTransparency: 0.5
     - _Specular: 1
     - _SrcBlend: 1
-    - _TransparencyFade: 0.0001
+    - _TransparencyFade: 1
     - _UVSec: 0
     - _UnderwaterMode: 0
     - _UnderwaterTranspDist: 13.56
@@ -126,10 +120,9 @@ Material:
     - __dirty: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepWaterColor: {r: 0.4198113, g: 0.7763128, b: 1, a: 1}
+    - _DeepWaterColor: {r: 0.06763973, g: 0.11615724, b: 0.1509434, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _FogColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 0.9292453, g: 1, b: 0.974127, a: 1}
+    - _MainColor: {r: 0.4745098, g: 1, b: 0.80784315, a: 1}
     - _SpecularColor: {r: 0.9716981, g: 0.9139198, b: 0.7104397, a: 1}
-  m_BuildTextureStacks: []
