@@ -147,7 +147,11 @@
                 "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.lastMeshSelectMode",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "value": "{\"m_Value\":8}"
+=======
+                "value": "{\"m_Value\":4}"
+>>>>>>> parent of ccbf6c8 (zdad)
 =======
                 "value": "{\"m_Value\":4}"
 >>>>>>> parent of ccbf6c8 (zdad)
