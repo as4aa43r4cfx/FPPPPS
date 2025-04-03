@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour
     // 중력 변수
     float gravity = -20f;
 
-    float waterGravity = -10f;
+    float waterGravity = -30f;
 
     // 수직 속력 변수
     public float yVelocity = 0;
@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     // 점프력 변수
     public float jumpPower = 10f;
 
-    public float upSwim = 4f;
+    public float upSwim = 0.6f;
 
     // 점프 상태 변수
     public bool isJumping = false;
@@ -87,7 +87,7 @@ public class PlayerMove : MonoBehaviour
                 // 점프 전 상태로 초기화한다.
                 isJumping = false;
                 // 캐릭터 수직 속도를 0으로 만든다.
-                yVelocity = 0;
+                yVelocity = -0;
             }
 
             // 2-3. 만일, 키보드 <Space> 버튼을 입력했고, 점프를 안 한 상태라면...
