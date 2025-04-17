@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
+
     Vector3 moveVec;
 
     // 이동 속도 변수
@@ -55,6 +56,10 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+
+
+
+
         // 게임 상태가 "게임 중" 상태일 때에만 조작 가능하게 한다.
         if (GameManager.gm.gState != GameManager.GameState.Run)
         {
@@ -69,6 +74,7 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxis("Vertical");
 
         // 2. 이동 방향을 설정한다.
+
         Vector3 dir = new Vector3(h, 0, v);
         moveVec = new Vector3(h, 0, v).normalized;
         dir = dir.normalized;
@@ -79,7 +85,7 @@ public class PlayerMove : MonoBehaviour
         // 2-1. 메인 카메라를 기준으로 방향을 변환한다.
         dir = Camera.main.transform.TransformDirection(dir);
 
-        if(!GameManager.isWater)
+        if (!GameManager.isWater)
         {
             // 2-2. 만일, 점프 중이었고, 다시 바닥에 착지했다면...
             if (isJumping && cc.collisionFlags == CollisionFlags.Below)
@@ -103,7 +109,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            if(Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 yVelocity = upSwim;
             }
@@ -112,7 +118,7 @@ public class PlayerMove : MonoBehaviour
                 yVelocity += waterGravity * Time.deltaTime;
             }
         }
-        
+
 
         dir.y = yVelocity;
 
@@ -139,7 +145,11 @@ public class PlayerMove : MonoBehaviour
             moveSpeed = 7f;
             jumpPower = 4f;
         }
-        transform.LookAt(transform.position + moveVec   );
+        transform.LookAt(transform.position + moveVec);
+
+        Vector3 rot = transform.eulerAngles;
+        rot.y -= 60f;
+        transform.eulerAngles = rot;
     }
 
     // 플레이어의 피격 함수
