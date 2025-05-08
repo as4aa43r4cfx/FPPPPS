@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI;   
 
-public class waterswitch : MonoBehaviour
+public class waterswitch1 : MonoBehaviour
 {
     [SerializeField] private GameObject Switch;
     [SerializeField] private GameObject Water1;
@@ -22,7 +22,7 @@ public class waterswitch : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Vector3 temp = Water1.transform.position;
-                temp.y = -37;
+                temp.y = -20;
                 Water1.transform.position = temp;
             }
         }
