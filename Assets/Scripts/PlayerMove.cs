@@ -57,7 +57,10 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
 
-
+        if (yVelocity < -5f)
+        {
+            yVelocity = -5f; // 공중에서 낙하 제한
+        }
 
 
         // ���� ���°� "���� ��" ������ ������ ���� �����ϰ� �Ѵ�.
@@ -129,6 +132,10 @@ public class PlayerMove : MonoBehaviour
         //hpSlider.value = (float)hp / (float)maxHp;
         if (GameManager.isWater) // �� �� �� ��
         {
+            if (yVelocity < -3f)
+            {
+                yVelocity = -3f; // 공중에서 낙하 제한
+            }
             moveSpeed = 4f;
         }
         else
