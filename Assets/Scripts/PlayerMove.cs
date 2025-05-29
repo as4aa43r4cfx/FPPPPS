@@ -159,7 +159,7 @@ public class PlayerMove : MonoBehaviour
 
             // y 회전에 -60도 추가
             Vector3 rot = transform.eulerAngles;
-            rot.y -= 60f;
+            rot.y -= 150f;
             transform.eulerAngles = rot;
         }
     }
