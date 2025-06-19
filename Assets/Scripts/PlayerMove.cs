@@ -132,6 +132,7 @@ public class PlayerMove : MonoBehaviour
         //hpSlider.value = (float)hp / (float)maxHp;
         if (GameManager.isWater) // �� �� �� ��
         {
+            
             if (yVelocity < -3f)
             {
                 yVelocity = -3f; // 공중에서 낙하 제한
@@ -156,6 +157,13 @@ public class PlayerMove : MonoBehaviour
         {
             // 이동 방향을 바라보게 회전
             transform.LookAt(transform.position + moveVec);
+            if (GameManager.isWater)
+            {
+                Quaternion lookRot = Quaternion.LookRotation(moveVec);
+                Vector3 euler = lookRot.eulerAngles;
+                euler.x = 90f;
+                transform.rotation = Quaternion.Euler(euler);
+            }
 
             // y 회전에 -60도 추가
             Vector3 rot = transform.eulerAngles;
