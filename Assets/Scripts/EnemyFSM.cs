@@ -86,6 +86,8 @@ public class EnemyFSM : MonoBehaviour
 
         // 네비게이션 컴포넌트를 받아온다
         smith = GetComponent<NavMeshAgent>();
+
+        smith.baseOffset = 0f;
     }
 
     void Update()
@@ -132,6 +134,11 @@ public class EnemyFSM : MonoBehaviour
 
     void Move()
     {
+        if (smith.isStopped)
+        {
+            smith.isStopped = false;
+        }
+
         // 만약, 현재 위치가 초기 위치에서 이동 가능 범위를 벗어났다면...
         if (Vector3.Distance(transform.position, originPos) > moveDistance)
         {
@@ -204,6 +211,10 @@ public class EnemyFSM : MonoBehaviour
 
     void Return()
     {
+        if (smith.isStopped)
+        {
+            smith.isStopped = false;
+        }
         // 만약, 초기 위치와의 거리가 0.1f 이상이라면 초기 위치로 이동한다.
         if (Vector3.Distance(transform.position, originPos) > 0.1f)
         {
