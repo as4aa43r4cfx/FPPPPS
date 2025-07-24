@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    [SerializeField] private float waterDrag; // ¹° ¼Ó ÀúÇ×·Â
-    private float originDrag; // ¹° ¹Û ¼¼»óÀÇ ¿ø·¡ ÀúÇ×·Â
+    [SerializeField] private float waterDrag; // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½×·ï¿½
+    private float originDrag; // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×·ï¿½
 
-    private Color originColor; // ¹° ¹Û ¼¼»óÀÇ ³·ÀÇ ¿ø·¡ Fog »ö±ò
-    [SerializeField] private Color originNightColor;  // ¹° ¹Û ¼¼»óÀÇ ¹ãÀÇ ¿ø·¡ Fog »ö±ò
+    private Color originColor; // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Fog ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private Color originNightColor;  // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Fog ï¿½ï¿½ï¿½ï¿½
 
-    [SerializeField] private Color waterColor; // ³·ÀÇ ¹° ¼Ó Fog »ö±ò
-    [SerializeField] private Color waterNightColor; // ¹ãÀÇ ¹° ¼Ó Fog »ö±ò
+    [SerializeField] private Color waterColor; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Fog ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private Color waterNightColor; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Fog ï¿½ï¿½ï¿½ï¿½
 
-    [SerializeField] private float waterFogDensity; // ³·ÀÇ ¹° ¼Ó Å¹ÇÑ Á¤µµ
-    [SerializeField] private float waterNightFogDensity; // ³·ÀÇ ¹° ¼Ó Å¹ÇÑ Á¤µµ
+    [SerializeField] private float waterFogDensity; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Å¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private float waterNightFogDensity; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Å¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    private float originFogDensity; // ¹° ¹Û ¼¼»óÀÇ ³·ÀÇ Å¹ÇÑ Á¤µµ
-    [SerializeField] private float originNightFogDensity; // ¹° ¹Û ¼¼»óÀÇ ¹ãÀÇ Å¹ÇÑ Á¤µµ
+    private float originFogDensity; // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] private float originNightFogDensity; // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     [SerializeField] private float breatheTime;
     private float currentBreatheTime;
@@ -51,8 +51,8 @@ public class Water : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            Debug.Log("1Â÷Â÷¤¿¤¿¤¿¤¿");
-            GetInWater(other);  // ¹°¿¡ µé¾î°¨
+            Debug.Log("1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            GetInWater(other);  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¨
             
 
         }
@@ -61,13 +61,13 @@ public class Water : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.tag == "Player")
-            GetOutWater(other);  // ¹°¿¡¼­ ³ª¿È
+            GetOutWater(other);  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
 
 
 
-    //¿©±â ¹Ù²Ù±â    
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù±ï¿½    
     private void GetInWater(Collider _player)
     {
         GameManager.isWater = true;
@@ -75,7 +75,7 @@ public class Water : MonoBehaviour
         RenderSettings.fogColor = waterColor;
         Debug.Log(RenderSettings.fogColor);
         RenderSettings.fogDensity = waterFogDensity;
-        Debug.Log("¾Æ¾Æ¤¿¤¿¤¿¤¿¤¿¤¿¤¿¤¿¤¿¤¿¤¿");
+        Debug.Log("ï¿½Æ¾Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
     }
 

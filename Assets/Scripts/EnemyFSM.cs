@@ -35,6 +35,12 @@ public class EnemyFSM : MonoBehaviour
     // 이동 속도
     public float moveSpeed = 5f;
 
+    // 기본 이동 속도 저장
+    private float originalMoveSpeed;
+
+    // 물에 닿았을 때 material 변수
+    public Material waterMaterial;
+
     // 현재 시간
     float currentTime = 0;
 
@@ -50,6 +56,9 @@ public class EnemyFSM : MonoBehaviour
 
     // 이동 가능 범위
     public float moveDistance = 20f;
+
+    // 물 밖으로 나갔을 때 원래 material 변수
+    private Material defaultMaterial;
 
     // 적 캐릭터 체력
     public int hp = 15;
@@ -71,6 +80,9 @@ public class EnemyFSM : MonoBehaviour
         // 시작할 때 적 캐릭터의 상태를 대기(Idle)로 설정한다.
         m_State = EnemyState.Idle;
 
+        // 시작할 때 원래 이동 속도를 저장한다.
+        originalMoveSpeed = moveSpeed;
+
         // 플레이어의 트랜스폼 컴포넌트를 받아온다
         player = GameObject.Find("Player").transform;
 
@@ -86,6 +98,8 @@ public class EnemyFSM : MonoBehaviour
 
         // 네비게이션 컴포넌트를 받아온다
         smith = GetComponent<NavMeshAgent>();
+
+        defaultMaterial = GetComponentInChildren<SkinnedMeshRenderer>().material;
 
         smith.baseOffset = 0f;
     }
@@ -116,8 +130,37 @@ public class EnemyFSM : MonoBehaviour
         }
 
         // 현재 hp(%)를 hp 슬라이더의 value에 반영한다.
-        hpSlider.value = (float)hp / (float)maxHp;
+        // hpSlider.value = (float)hp / (float)maxHp;
     }
+
+    // 물에 들어왔을 때 실행
+    public void OnTriggerEnter(Collider other)
+    {
+
+
+        if (other.gameObject.GetComponent<Water>() != null)
+        {
+            moveSpeed = originalMoveSpeed * 2;
+            GetComponentInChildren<SkinnedMeshRenderer>().material = waterMaterial;
+        }
+    }
+
+    // 물에서 나갔을 때 실행
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<Water>() != null)
+        {
+            moveSpeed = originalMoveSpeed;
+            GetComponentInChildren<SkinnedMeshRenderer>().material = defaultMaterial;
+        }
+    }
+
+    void FixedUpdate()
+   {
+        // NavMeshAgent의 이동 속도를 설정한다.
+        smith.speed = moveSpeed;
+
+   }
 
     void Idle()
     {
@@ -138,6 +181,7 @@ public class EnemyFSM : MonoBehaviour
         {
             smith.isStopped = false;
         }
+
 
         // 만약, 현재 위치가 초기 위치에서 이동 가능 범위를 벗어났다면...
         if (Vector3.Distance(transform.position, originPos) > moveDistance)
@@ -204,10 +248,12 @@ public class EnemyFSM : MonoBehaviour
     }
 
     // 플레이어의 컴포넌트에서 호출할 함수를 정의한다
+    
     public void AttackAction()
     {
         player.GetComponent<PlayerMove>().DamageAction(attackPower);
     }
+    
 
     void Return()
     {
@@ -283,6 +329,7 @@ public class EnemyFSM : MonoBehaviour
             Die();
         }
     }
+    
 
     void Damaged()
     {
