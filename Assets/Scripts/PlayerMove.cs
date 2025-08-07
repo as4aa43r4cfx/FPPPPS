@@ -63,11 +63,7 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        // ���� ���°� "���� ��" ������ ������ ���� �����ϰ� �Ѵ�.
-        if (GameManager.gm.gState != GameManager.GameState.Run)
-        {
-            return;
-        }
+        
 
         // Ű���� <W>, <A>, <S>, <D> ��ư�� �Է��ϸ� ĳ���͸� �� �������� �̵���Ű�� �ʹ�.
         // Ű���� <Space> ��ư�� �Է��ϸ� ĳ���͸� �������� ������Ű�� �ʹ�.
