@@ -17,7 +17,7 @@ public class Switch : MonoBehaviour
     void Update()
     {
         dist = Vector3.Distance(Switchobj.transform.position, transform.position);
-        if (dist < 4)
+        if (dist < 5.4f)
         {
             actionText.gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
